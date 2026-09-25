@@ -1,0 +1,17 @@
+# StudyMates — static site, no build step.
+# Deploy the folder containing this file as the site root (publish dir ".").
+[build]
+  publish = "."
+  command = "echo 'static site — nothing to build'"
+
+# Never cache the service worker, so app updates reach users instantly.
+[[headers]]
+  for = "/sw.js"
+  [headers.values]
+    Cache-Control = "no-cache, no-store, must-revalidate"
+
+# Long-cache the versioned vendor bundle (filename changes with upgrades).
+[[headers]]
+  for = "/js/vendor/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"

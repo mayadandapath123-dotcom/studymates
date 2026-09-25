@@ -1,0 +1,38 @@
+/* ============ 3D STAGE ============ */
+.room{position:relative;width:100%;aspect-ratio:16/10;border-radius:var(--radius);overflow:hidden;background:linear-gradient(#ffe7c6,#ffd9a8);box-shadow:var(--shadow)}
+#scene{position:absolute;inset:0;width:100%;height:100%;display:block;touch-action:pan-y}
+.vignette{position:absolute;inset:0;box-shadow:inset 0 0 70px rgba(90,50,20,.22);border-radius:var(--radius);pointer-events:none}
+.nogl{position:absolute;inset:0;display:grid;place-items:center;background:#ffe7c6;text-align:center;padding:20px;font-weight:700;color:var(--ink-soft)}
+.nogl[hidden]{display:none}
+
+/* --- HUD --- */
+.hud-sign{position:absolute;top:-6px;left:50%;transform:translateX(-50%);text-align:center;z-index:6;pointer-events:none}
+.ropes{display:flex;justify-content:center;gap:44px}
+.ropes i{display:block;width:4px;height:26px;background:#a06a3b;border-radius:2px}
+.sign-board{background:#8a5a33;color:#fff3df;border-radius:12px;padding:6px 22px 8px;box-shadow:var(--shadow-s);border:3px solid #6f4525}
+.sign-board span{display:block;font-size:11px;letter-spacing:.12em;text-transform:uppercase;opacity:.85}
+.sign-board b{font-size:clamp(16px,2.4vw,24px);font-variant-numeric:tabular-nums}
+.time-badge{position:absolute;top:10px;left:12px;z-index:6;background:rgba(255,253,247,.85);color:var(--ink-soft);font-size:12px;font-weight:800;padding:4px 12px;border-radius:999px}
+
+/* --- speech bubble / zzz / music notes (anchored by the 3D stage) --- */
+.bubble{position:absolute;left:50%;top:30%;transform:translate(-18%,-118%);width:max-content;max-width:min(220px,52vw);background:#fffdf7;border:3px solid #8a5a33;border-radius:14px;padding:8px 12px;font-size:13px;font-weight:700;color:var(--ink);box-shadow:var(--shadow-s);animation:pop .25s ease-out;z-index:7;pointer-events:none}
+.bubble::after{content:"";position:absolute;left:22px;bottom:-12px;width:16px;height:16px;background:inherit;border-right:3px solid #8a5a33;border-bottom:3px solid #8a5a33;transform:rotate(45deg);border-bottom-right-radius:4px}
+.bubble[hidden]{display:none}
+@keyframes pop{from{transform:translate(-18%,-118%) scale(.6);opacity:0}to{transform:translate(-18%,-118%) scale(1);opacity:1}}
+.zzz{position:absolute;font-weight:900;color:#7a86e0;z-index:7;pointer-events:none;transform:translate(-10%,-110%)}
+.zzz[hidden]{display:none}
+.zzz span{position:absolute;animation:zfloat 2.6s ease-in-out infinite;opacity:0}
+.zzz span:nth-child(1){font-size:14px;left:0;animation-delay:0s}
+.zzz span:nth-child(2){font-size:19px;left:14px;animation-delay:.5s}
+.zzz span:nth-child(3){font-size:26px;left:30px;animation-delay:1s}
+@keyframes zfloat{0%{transform:translateY(8px);opacity:0}30%{opacity:1}100%{transform:translateY(-26px);opacity:0}}
+.music-notes{position:absolute;color:#e05a5a;font-weight:900;z-index:7;pointer-events:none;transform:translate(-60%,-120%)}
+.music-notes[hidden]{display:none}
+.music-notes span{position:absolute;font-size:20px;animation:notefloat 1.8s ease-in-out infinite;opacity:0}
+.music-notes span:nth-child(2){left:20px;font-size:26px;animation-delay:.4s;color:#3fb3a8}
+.music-notes span:nth-child(3){left:-16px;animation-delay:.8s;color:#f5b942}
+@keyframes notefloat{0%{transform:translateY(10px) rotate(-8deg);opacity:0}30%{opacity:1}100%{transform:translateY(-30px) rotate(10deg);opacity:0}}
+.room[data-reduced="true"] .bubble,.room[data-reduced="true"] .zzz span,.room[data-reduced="true"] .music-notes span{animation:none}
+.room[data-faded="true"] .bubble,.room[data-faded="true"] .zzz,.room[data-faded="true"] .music-notes{display:none}
+
+@media (max-width:640px){.room{aspect-ratio:4/4.4}.bubble{font-size:12px}}

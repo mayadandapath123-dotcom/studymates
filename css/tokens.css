@@ -1,0 +1,31 @@
+/* StudyMates design tokens + character palettes */
+:root{
+  --bg:#fff6e9; --bg2:#ffeed3;
+  --ink:#4a3a2e; --ink-soft:#7a6a5c; --ink-faint:#a8978a;
+  --card:#fffdf7; --line:#f0ddbd;
+  --brand:#e07a3f; --brand-dark:#c25f27; --brand-soft:#ffe3c7;
+  --teal:#2fa39a; --teal-dark:#238179; --teal-soft:#cdeee9;
+  --gold:#f5b942; --gold-soft:#fdeecb;
+  --danger:#d64545;
+  --radius:18px; --radius-s:12px;
+  --shadow:0 10px 30px rgba(122,74,43,.12), 0 2px 6px rgba(122,74,43,.10);
+  --shadow-s:0 4px 14px rgba(122,74,43,.12);
+  --font:"Nunito","Quicksand","Segoe UI Rounded","SF Pro Rounded",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+}
+/* --- Milo palette (applied to character via body[data-char]) --- */
+body[data-char="milo"]{
+  --c-skin:#ffd9b3; --c-hair:#7a4a2b; --c-hair2:#5f3720;
+  --c-top:#3fb3a8; --c-top2:#2b8f87; --c-bottom:#8a6a4f; --c-shoe:#e07a3f;
+  --c-blush:#f4a48f; --c-cup:#e07a3f; --c-accent:#2fa39a;
+  --buddy-dot:#3fb3a8;
+}
+/* --- Momo palette --- */
+body[data-char="momo"]{
+  --c-skin:#8a5a3b; --c-hair:#2b2320; --c-hair2:#171212;
+  --c-top:#fff3df; --c-top2:#f0d9b5; --c-bottom:#e05a5a; --c-shoe:#2fa39a;
+  --c-blush:#d97b6c; --c-cup:#2fa39a; --c-accent:#e05a5a;
+  --buddy-dot:#e05a5a;
+}
+@media (prefers-reduced-motion:reduce){
+  :root{ --motion-ok:0; }
+}
